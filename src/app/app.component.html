@@ -1,0 +1,97 @@
+<div class="content" fxFlex fxLayout="row" fxLayoutAlign="center">
+
+  <div fxFlex fxLayout="column">
+
+    <div fxFlex="20" fxLayout="row" fxLayoutAlign="center center">
+      <h2>GAME IA 2020-1</h2>
+      <mat-icon class="icon" (click)="reloadGame()">refresh</mat-icon>
+    </div>
+
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="center start">
+      <mat-card fxFlex fxLayout="row" fxLayoutAlign="space-between start" fxLayout.lt-md="column"
+        class="card-container mat-elevation-z8">
+
+        <div fxFlex fxLayout="column" fxLayoutAlign="start center" style="height: 498px;">
+          <div fxFlex fxLayout="row">
+            <span class="cards-played">Vitórias: {{winnersPlayer1}}</span>
+          </div>
+          <div fxFlex="20" fxLayout="row">
+            <span class="cards-played">Cartas Jogadas Player 1</span>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutGap="10px">
+            <div *ngFor="let card of cardsPlayedPlayer1">
+              <button mat-raised-button class="button-player1">
+                <span>{{card}}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+        <div fxFlex fxLayout="column" fxLayoutGap="100px" class="board">
+
+          <div fxFlex [formGroup]="formPlayer1">
+            <div fxFlex fxLayout="row" fxLayoutGap="10px" formArrayName="options"
+              *ngFor="let item of formPlayer1.get('options')?.controls; let i = index;">
+              <div fxFlex [formGroupName]="i" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+                <button [disabled]="!item.get('card').value ? true : false" mat-raised-button class="button-player1"
+                  (click)="setMovePlayer1(item)" (click)="verifyWinner('Jogador 1')">
+                  <span>{{item.get('card').value}}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" class="plays-container">
+            <div fxLayout="column" fxLayoutAlign="center start">
+              <button mat-raised-button color="primary" class="button-player1">
+                {{formPlayer1.get('selected').value}}
+              </button>
+            </div>
+            <span style="color: white; padding: 5px">Jogador 1</span>
+            <h1>VS</h1>
+            <span style="color: white; padding: 5px">Jogador 2</span>
+            <div fxLayout="column" fxLayoutAlign="center end">
+              <button mat-raised-button color="primary" class="button-player2">
+                {{formPlayer2.get('selected').value}}
+              </button>
+            </div>
+          </div>
+
+          <div fxFlex [formGroup]="formPlayer2">
+            <div fxFlex fxLayoutGap="10px" formArrayName="options"
+              *ngFor="let item of formPlayer2.get('options')?.controls; let i = index;">
+              <div fxFlex [formGroupName]="i" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="center center">
+                <button [disabled]="!item.get('card').value ? true : false" mat-raised-button class="button-player2"
+                  (click)="setMovePlayer2(item)" (click)="verifyWinner('Jogador 2')">
+                  <span>{{item.get('card').value}}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div fxFlex fxLayout="column" fxLayoutAlign="start center" style="height: 498px;">
+          <div fxFlex fxLayout="row">
+            <span class="cards-played">Vitórias: {{winnersPlayer2}}</span>
+          </div>
+          <div fxFlex="20" fxLayout="row">
+            <span class="cards-played">Cartas Jogadas Player 2</span>
+          </div>
+          <div fxFlex fxLayout="row" fxLayoutGap="10px">
+            <div *ngFor="let card of cardsPlayedPlayer2">
+              <button mat-raised-button class="button-player2">
+                <span>{{card}}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>

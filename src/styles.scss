@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; width: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+app-root {
+    display: block;
+    height: 100%;
+    background-image: url("https://lh3.googleusercontent.com/proxy/n3owwAcfft63xRYrFVEma4IzbvULWWkd2hGXNx0L04aQgGaUSUktPp6_-kkacCBdwUW2BB9Wqp-tMkPXc-bRSyap0k4Hvy0cReseeQhz2Is");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
